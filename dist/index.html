@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wetyss-boiler</title>
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <canvas
+      style="outline: 1px solid #000"
+      id="canvas"
+      width="600"
+      height="600"
+    ></canvas>
+    <p>FPS: <span id="fps"></span></p>
+    <p>Particles: <span id="particles"></span></p>
+    <p>Checks per Frame: <span id="checks"></span></p>
+    <p>Use QuadTree: <input type="checkbox" id="useQuadTree" /></p>
+    <p>Show QuadTree: <input type="checkbox" id="showQuadTree" /></p>
+    <button id="add">Add 200 Particles</button>
+  </body>
+</html>
