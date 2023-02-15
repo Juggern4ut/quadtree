@@ -1,0 +1,92 @@
+@import "./checkbox";
+
+body {
+  max-width: 602px;
+  margin: 0 auto;
+  color: #454545;
+  width: calc(100% - 20px);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Open Sans", Arial;
+}
+
+canvas {
+  border: 1px solid #333;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #07a;
+}
+
+p {
+  text-align: justify;
+  &.left {
+    text-align: left;
+  }
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  button {
+    flex: 1;
+    &:nth-of-type(2) {
+      margin: 0 5px;
+    }
+  }
+}
+
+#dom {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  background-color: #333;
+  padding: 10px;
+
+  p {
+    margin: 0;
+    flex-grow: 1;
+    &:last-of-type {
+      text-align: right;
+    }
+    &:nth-of-type(2) {
+      text-align: center;
+    }
+  }
+}
+
+#disclaimer {
+  font-size: 14px;
+  margin: 20px 0;
+
+  h4,
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    margin-bottom: 5px;
+  }
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}

@@ -9,17 +9,142 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <canvas
-      style="outline: 1px solid #000"
-      id="canvas"
-      width="600"
-      height="600"
-    ></canvas>
-    <p>FPS: <span id="fps"></span></p>
-    <p>Particles: <span id="particles"></span></p>
-    <p>Checks per Frame: <span id="checks"></span></p>
-    <p>Use QuadTree: <input type="checkbox" id="useQuadTree" /></p>
-    <p>Show QuadTree: <input type="checkbox" id="showQuadTree" /></p>
-    <button id="add">Add 200 Particles</button>
+    <header>
+      <h1>From Chaos to Order: Improving Particle Systems with QuadTrees</h1>
+      <h2>
+        Exploring the Use of Quadtrees to Organize Particle Systems and Achieve
+        Greater Performance, Stability, and Predictability.
+      </h2>
+      <section>
+        <h3>The Goal</h3>
+        <p>
+          The system contains particles of a given width and height that move
+          around in a seemingly random manner. Whenever a particle overlaps
+          another particle, both should be colored green. If no intersection
+          occurs, the particle should be displayed in red.
+        </p>
+
+        <h3>The Problem</h3>
+        <p>
+          Since every particle needs to be checked against every other particle,
+          the number of checks required to complete the task increases
+          exponentially. This can be calculated by the simple formula
+          <i>n<sup>2</sup></i
+          >, where <i>n</i> is the number of particles in the system.
+        </p>
+        <p>
+          It is also important to note that most of the checks are unnecessary
+          since only particles that are close to each other affect each other.
+          However, to check if two particles are close to each other, we still
+          need to perform the same amount of checks as before:
+          <i>n<sup>2</sup></i>
+        </p>
+
+        <h3>The Solution</h3>
+        <p>
+          Using a QuadTree recursive algorithm, we can handle a much larger
+          number of particles without exponential growth..
+        </p>
+        <p>
+          A QuadTree has a boundary, a capacity, and an array of particles (in
+          this example). When we add a particle to the QuadTree, it checks if
+          its capacity has been reached. If so, the QuadTree splits itself into
+          four smaller QuadTrees, each a quarter of the size of the original
+          QuadTree.
+        </p>
+        <p>
+          When querying a QuadTree, a boundary is passed. If the QuadTree
+          intersects with the given boundary, it adds its particles to the
+          results array and queries its sub-QuadTrees. If not, it breaks out
+          immediately.
+        </p>
+
+        <h3>Demonstration</h3>
+        <p>
+          Here is a demo where you can see the QuadTree in action. If you add
+          1'000 particles to the system and disable the QuadTree, you should see
+          a significant performance drop (depending on your browser/system). If
+          you then enable the QuadTree, the frame rate should noticeably
+          improve.
+        </p>
+      </section>
+    </header>
+    <main>
+      <canvas id="canvas" width="600" height="600"></canvas>
+      <section id="dom">
+        <p>FPS: <span id="fps"></span></p>
+        <p>Particles: <span id="particles"></span></p>
+        <p>Checks per Frame: <span id="checks"></span></p>
+      </section>
+      <section id="controls">
+        
+        <p>
+          <label for="useQuadTree" class="checkbox-label">Use QuadTree:</label>
+          <input type="checkbox" id="useQuadTree" class="checkbox">
+        </p>
+
+        <p>
+          <label for="showQuadTree" class="checkbox-label">Show QuadTree:</label>
+          <input type="checkbox" id="showQuadTree" class="checkbox">
+        </p>
+
+      </section>
+      <section id="buttons">
+        <button id="add">Add 200 Particles</button>
+        <button id="toggle">Stop</button>
+        <button id="clear">Clear</button>
+      </section>
+    </main>
+    <footer>
+      <section id="disclaimer">
+        <h4>Disclaimer:</h4>
+        <p>
+          This project is intended as a demonstration/visualization only. It's
+          worth noting that QuadTrees typically work with exact points rather
+          than boundaries, and that when everything is added, the boundary may
+          not fit the QuadTree exactly, which could result in some imperfections
+          in the visualization.
+        </p>
+      </section>
+      <h3>References</h3>
+
+      <p class="left">
+        Wikipedia. (n.d.). Quadtree. Retrieved February 15, 2023, from
+        <a href="https://wikipedia.org/wiki/Quadtree" target="_blank"
+          >https://wikipedia.org/wiki/Quadtree</a
+        >
+      </p>
+      <p class="left">
+        The Coding Train. (n.d.). Quadtree. Retrieved February 15, 2023, from
+        <a
+          href="https://thecodingtrain.com/challenges/98-quadtree"
+          target="_blank"
+          >https://thecodingtrain.com/challenges/98-quadtree</a
+        >
+      </p>
+      <p class="left">
+        Carnegie Mellon University, School of Computer Science. (n.d.). CMSC
+        420: Title of the document. Retrieved from
+        <a
+          href="https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/quadtrees.pdf"
+          target="_blank"
+          >https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/quadtrees.pdf</a
+        >
+      </p>
+
+      <h3>Author</h3>
+      <p class="left">
+        Github. (n.d.). QuadTree. Retrieved February 15, 2023, from
+        <a href="https://github.com/Juggern4ut/quadtree" target="_blank"
+          >https://github.com/Juggern4ut/quadtree</a
+        >
+      </p>
+      <p class="left">
+        Github. (n.d.). Lukas Meier. Retrieved February 15, 2023, from
+        <a href="https://github.com/Juggern4ut" target="_blank"
+          >https://github.com/Juggern4ut</a
+        >
+      </p>
+    </footer>
   </body>
 </html>

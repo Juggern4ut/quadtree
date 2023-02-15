@@ -1,0 +1,37 @@
+/* CSS */
+.checkbox-label {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333;
+  width: 110px;
+}
+
+.checkbox {
+  display: inline-block;
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #999;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+
+.checkbox:checked {
+  background-color: #999;
+  border-color: #999;
+}
+
+.checkbox:checked::before {
+  content: '\2714';
+  display: block;
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+  background-color: #999;
+  border-radius: 3px;
+}
